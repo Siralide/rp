@@ -81,6 +81,45 @@
         .no-select {
             user-select: none;
         }
+        .panel {
+            background-color: #2c2f4a;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-control, .form-check-label {
+            background-color: #343a40;
+            color: #fff;
+            border: none;
+        }
+        .form-check-input:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+        .btn {
+            border-radius: 10px;
+        }
+        .total-box {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .ticket {
+            background-color: #2c2f4a;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #212529;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            display: none; /* El footer estará oculto por defecto */
+            z-index: 1000;  /* Asegura que el footer quede por encima del contenido */
+        }
     </style>
 </head>
 <body>
@@ -92,14 +131,33 @@
     </nav>
 <div class="container-fluid py-4">
     <div class="row">
-        <!-- Lista de precios -->
-        <div class="col-md-3 precio-lista">
-            <h4>Lista de precios</h4>
-            <div id="lista-precios"></div>
+        <!-- Información -->
+<div class="col-md-3">
+    <div class="panel">
+        <h5>Lista de precios</h5>
+        <div id="lista-precios"></div>
+    </div>
+    <div class="panel">
+        <h5>Aplicar descuento convenio</h5>
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="convenio">
+            <label class="form-check-label" for="convenio">Aplicar convenio (10%)</label>
         </div>
+        <div class="mb-3">
+            <label for="descuentoConvenio" class="form-label">Descuento convenio (%)</label>
+            <input type="number" class="form-control" id="descuentoConvenio" value="10">
+        </div>
+    </div>
+    <div class="panel">
+        <h5>Convenios activos</h5>
+        
+    </div>
+</div>
+
 
         <!-- Menú de selección -->
         <div class="col-md-6 no-select">
+            <div class="panel">
             <div class="seccion">
                 <h4>BEBIDAS NO ALCOHÓLICAS</h4>
                 <div class="d-flex flex-wrap" id="bebidas-no-alcoholicas"></div>
@@ -113,14 +171,20 @@
                 <div class="d-flex flex-wrap" id="bebidas-alcoholicas"></div>
             </div>
         </div>
+        </div>
 
         <!-- Ticket de compra -->
         <div class="col-md-3">
-            <div class="ticket" id="ticket"></div>
+            <div class="ticket" id="ticket">
+                <h5>Factura</h5>
+                <div id="detalleFactura"></div>
+                <hr>
+                <div class="total-box mb-3" id="totalFactura">Total: $0</div>
+                <button class="btn btn-danger w-100" onclick="resetearFormulario()"><i class="fas fa-redo"></i> Resetear</button>
+            </div>
         </div>
     </div>
 </div>
-
 
 <script>
     const productos = [
@@ -150,113 +214,141 @@
         { id: 22, nombre: 'Jagger Redbull', precio: 8.00, categoria: 'bebidas-alcoholicas' }
     ];
 
-    const ticket = {};
+    let ticket = {};
+    let convenioActivo = false;
 
     function renderProductos() {
-        const lista = document.getElementById('lista-precios');
-        const categorias = {
-            'bebidas-no-alcoholicas': 'BEBIDAS NO ALCOHÓLICAS',
-            'comidas': 'COMIDAS',
-            'bebidas-alcoholicas': 'BEBIDAS ALCOHÓLICAS',
-            '':'NO SE VENDEN TACOS'
-        };
+    const lista = document.getElementById('lista-precios');
+    const categorias = {
+        'bebidas-no-alcoholicas': 'BEBIDAS NO ALCOHÓLICAS',
+        'comidas': 'COMIDAS',
+        'bebidas-alcoholicas': 'BEBIDAS ALCOHÓLICAS',
+        '': 'NO SE VENDEN TACOS'
+    };
 
-        Object.entries(categorias).forEach(([key, label]) => {
-            const catDiv = document.createElement('div');
-            const catHeader = document.createElement('div');
-            catHeader.className = 'categoria-header';
-            catHeader.innerText = label;
-            catDiv.appendChild(catHeader);
+    Object.entries(categorias).forEach(([key, label]) => {
+        const catDiv = document.createElement('div');
+        const catHeader = document.createElement('div');
+        catHeader.className = 'categoria-header';
+        catHeader.innerText = label;
+        catDiv.appendChild(catHeader);
 
-            productos.filter(p => p.categoria === key).forEach(p => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item d-flex justify-content-between';
-                li.innerHTML = `<span>${p.nombre}</span><span>$${p.precio.toFixed(2)}</span>`;
-                catDiv.appendChild(li);
-            });
-
-            lista.appendChild(catDiv);
+        productos.filter(p => p.categoria === key).forEach(p => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between';
+            li.innerHTML = `<span>${p.nombre}</span><span>$${p.precio.toFixed(2)}</span>`;
+            catDiv.appendChild(li);
         });
 
-        productos.forEach(p => {
-            const divContenedor = document.getElementById(p.categoria);
-            const card = document.createElement('div');
-            card.className = 'producto-card';
+        lista.appendChild(catDiv);
+    });
 
-            card.innerHTML = `
-                <div class="producto-cuadro" onclick="cambiarCantidad(${p.id}, 1)">
-                    <div class="producto-nombre">${p.nombre}</div>
-                </div>
-                <div class="producto-controles">
-                    <button class="btn btn-success btn-sm" onclick="cambiarCantidad(${p.id}, 1)"><i class="fas fa-plus"></i></button>
-                    <input type="number" min="0" value="0" onchange="actualizarCantidad(${p.id}, this.value)" id="input-${p.id}">
-                    <button class="btn btn-warning btn-sm" onclick="cambiarCantidad(${p.id}, -1)"><i class="fas fa-minus"></i></button>
-                    <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${p.id})"><i class="fas fa-trash"></i></button>
-                </div>`;
+    productos.forEach(p => {
+        const divContenedor = document.getElementById(p.categoria);
+        const card = document.createElement('div');
+        card.className = 'producto-card';
 
-            divContenedor.appendChild(card);
-        });
-    }
+        card.innerHTML = `
+            <div class="producto-cuadro" onclick="cambiarCantidad(${p.id}, 1)">
+                <div class="producto-nombre">${p.nombre}</div>
+            </div>
+            <div class="producto-controles">
+                <button class="btn btn-success btn-sm" onclick="cambiarCantidad(${p.id}, 1)"><i class="fas fa-plus"></i></button>
+                <input type="number" min="0" value="${ticket[p.id] ? ticket[p.id].cantidad : 0}" onchange="actualizarCantidad(${p.id}, this.value)" id="input-${p.id}">
+                <button class="btn btn-warning btn-sm" onclick="cambiarCantidad(${p.id}, -1)"><i class="fas fa-minus"></i></button>
+                <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${p.id})"><i class="fas fa-trash"></i></button>
+            </div>`;
 
-    function cambiarCantidad(id, delta) {
-        if (!ticket[id]) ticket[id] = { ...productos.find(p => p.id === id), cantidad: 0 };
-        ticket[id].cantidad += delta;
-        if (ticket[id].cantidad < 0) ticket[id].cantidad = 0;
-        document.getElementById(`input-${id}`).value = ticket[id].cantidad;
-        renderTicket();
-    }
+        divContenedor.appendChild(card);
+    });
+}
 
-    function actualizarCantidad(id, valor) {
-        if (!ticket[id]) ticket[id] = { ...productos.find(p => p.id === id), cantidad: 0 };
-        ticket[id].cantidad = parseInt(valor) || 0;
-        renderTicket();
-    }
+function cambiarCantidad(id, delta) {
+    if (!ticket[id]) ticket[id] = { ...productos.find(p => p.id === id), cantidad: 0 };
+    ticket[id].cantidad += delta;
+    ticket[id].cantidad = Math.max(ticket[id].cantidad, 0); // Prevent negative quantity
 
-    function eliminarProducto(id) {
-        if (ticket[id]) {
-            ticket[id].cantidad = 0;
-            document.getElementById(`input-${id}`).value = 0;
-        }
-        renderTicket();
-    }
+    // Actualizar la visualización
+    document.getElementById(`input-${id}`).value = ticket[id].cantidad;
 
-    function resetearTodo() {
-        Object.keys(ticket).forEach(id => {
-            ticket[id].cantidad = 0;
-            const input = document.getElementById(`input-${id}`);
-            if (input) input.value = 0;
-        });
-        renderTicket();
-    }
+    actualizarTicket();
+}
 
-    function renderTicket() {
-        const ticketDiv = document.getElementById('ticket');
-        ticketDiv.innerHTML = '<h5>Factura</h5>';
+function actualizarCantidad(id, cantidad) {
+    if (!ticket[id]) ticket[id] = { ...productos.find(p => p.id === id), cantidad: 0 };
+    ticket[id].cantidad = Math.max(parseInt(cantidad) || 0, 0);  // Prevent negative values
 
+    // Actualizar la visualización
+    document.getElementById(`input-${id}`).value = ticket[id].cantidad;
+
+    actualizarTicket();
+}
+
+function eliminarProducto(id) {
+    delete ticket[id];
+    actualizarTicket();
+}
+
+
+    function actualizarTicket() {
+        const detalle = document.getElementById('detalleFactura');
+        const totalFactura = document.getElementById('totalFactura');
+        detalle.innerHTML = '';
         let total = 0;
+
         Object.values(ticket).forEach(item => {
             if (item.cantidad > 0) {
+                detalle.innerHTML += `
+                    <div class="ticket-item">
+                        <span>${item.nombre} x${item.cantidad}</span>
+                        <span>$${(item.precio * item.cantidad).toFixed(2)}</span>
+                    </div>
+                `;
                 total += item.precio * item.cantidad;
-                const div = document.createElement('div');
-                div.className = 'ticket-item';
-                div.innerHTML = `<div>${item.cantidad} x ${item.nombre}</div><div>$${(item.precio * item.cantidad).toFixed(2)}</div>`;
-                ticketDiv.appendChild(div);
             }
         });
 
-        const totalDiv = document.createElement('div');
-        totalDiv.className = 'ticket-item fw-bold border-top pt-2';
-        totalDiv.innerHTML = `<div>Total</div><div>$${total.toFixed(2)}</div>`;
-        ticketDiv.appendChild(totalDiv);
+        // Aplicar descuento si el convenio está activo
+        let descuento = 0;
+        const descuentoConvenio = document.getElementById('descuentoConvenio').value;
+        if (document.getElementById('convenio').checked) {
+            descuento = (total * descuentoConvenio) / 100;
+            total -= descuento;
+            detalle.innerHTML += `
+                <div class="ticket-item">
+                    <span>Descuento convenio (${descuentoConvenio}%)</span>
+                    <span>-$${descuento.toFixed(2)}</span>
+                </div>
+            `;
+        }
 
-        const resetBtn = document.createElement('button');
-        resetBtn.className = 'btn btn-danger reset-btn w-100';
-        resetBtn.innerHTML = '<i class="fas fa-trash"></i> Resetear';
-        resetBtn.onclick = resetearTodo;
-        ticketDiv.appendChild(resetBtn);
+        // Redondear total hacia arriba
+        total = Math.ceil(total);
+
+        totalFactura.innerText = `Total: $${total}`;
     }
+
+    function resetearFormulario() {
+    // Limpiar el ticket
+    ticket = {};
+    document.getElementById('detalleFactura').innerHTML = '';
+    document.getElementById('totalFactura').innerText = 'Total: $0';
+
+    // Limpiar los productos visualizados en el menú central
+    document.getElementById('bebidas-no-alcoholicas').innerHTML = '';
+    document.getElementById('comidas').innerHTML = '';
+    document.getElementById('bebidas-alcoholicas').innerHTML = '';
+
+    // Limpiar la lista de precios
+    document.getElementById('lista-precios').innerHTML = '';
+
+    // Volver a renderizar los productos
+    renderProductos();
+}
+
 
     renderProductos();
 </script>
+
 </body>
 </html>
