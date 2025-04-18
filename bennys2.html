@@ -132,32 +132,33 @@
 
           <hr />
           <h6>Mejoras por pieza</h6>
-          <div class="mb-3 d-flex flex-wrap gap-2">
-            <!-- 6 piezas para seleccionar -->
+          <div class="mb-3">
             <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza1" id="pieza1"/>
+              <input class="form-check-input mejora-pieza" type="radio" name="mejora" value="1" id="pieza1"/>
               <label class="form-check-label" for="pieza1">Pieza 1</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza2" id="pieza2"/>
+              <input class="form-check-input mejora-pieza" type="radio" name="mejora" value="2" id="pieza2"/>
               <label class="form-check-label" for="pieza2">Pieza 2</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza3" id="pieza3"/>
+              <input class="form-check-input mejora-pieza" type="radio" name="mejora" value="3" id="pieza3"/>
               <label class="form-check-label" for="pieza3">Pieza 3</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza4" id="pieza4"/>
+              <input class="form-check-input mejora-pieza" type="radio" name="mejora" value="4" id="pieza4"/>
               <label class="form-check-label" for="pieza4">Pieza 4</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza5" id="pieza5"/>
+              <input class="form-check-input mejora-pieza" type="radio" name="mejora" value="5" id="pieza5"/>
               <label class="form-check-label" for="pieza5">Pieza 5</label>
             </div>
-            <div class="form-check">
-              <input class="form-check-input mejora" type="checkbox" value="pieza6" id="pieza6"/>
-              <label class="form-check-label" for="pieza6">Pieza 6</label>
-            </div>
+          </div>
+
+          <!-- Opción de mejora completa -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="mejora" id="mejoraCompleta" value="completa"/>
+            <label class="form-check-label" for="mejoraCompleta">Mejora completa (10%)</label>
           </div>
         </div>
       </div>
@@ -178,13 +179,14 @@
   </div>
 
   <script>
-    const servicios = document.querySelectorAll('.servicio, .mejora, .reparacion');
-    servicios.forEach(s => s.addEventListener('change', calcularTotal));
+    document.querySelectorAll('.servicio, .reparacion, .mejora-pieza, #mejoraCompleta, #convenio').forEach(el => {
+      el.addEventListener('change', calcularTotal);
+    });
+
     document.getElementById('precioVehiculo').addEventListener('input', calcularTotal);
-    document.getElementById('convenio').addEventListener('change', calcularTotal);
 
     function calcularTotal() {
-      const precioVehiculo = parseFloat(document.getElementById('precioVehiculo').value) || 10000;
+      const precioVehiculo = Math.max(10000, parseFloat(document.getElementById('precioVehiculo').value) || 10000);
       let total = 0;
       let detalle = "";
 
@@ -211,17 +213,16 @@
       }
 
       // Mejoras
-      const mejoras = document.querySelectorAll('.mejora:checked');
-      if (mejoras.length >= 5) {
-        const mejoraCompleta = Math.ceil(precioVehiculo * 0.10);
-        total += mejoraCompleta;
-        detalle += `<div>Mejora completa (10%): $${mejoraCompleta}</div>`;
-      } else {
-        const precioPieza = 100;
-        const subtotal = mejoras.length * precioPieza;
-        total += subtotal;
-        if (mejoras.length > 0)
-          detalle += `<div>Mejoras por pieza (${mejoras.length}): $${subtotal}</div>`;
+      const mejoraSeleccionada = document.querySelector('input[name="mejora"]:checked');
+      if (mejoraSeleccionada) {
+        if (mejoraSeleccionada.value === "completa") {
+          const precio = Math.ceil(precioVehiculo * 0.10);
+          total += precio;
+          detalle += `<div>Mejora completa (10%): $${precio}</div>`;
+        } else {
+          total += 100;
+          detalle += `<div>Mejora por pieza: $100</div>`;
+        }
       }
 
       // Convenio
@@ -239,10 +240,7 @@
     function resetearFormulario() {
       document.getElementById('precioVehiculo').value = 10000;
       document.getElementById('convenio').checked = false;
-      document.querySelectorAll('.servicio, .mejora, .reparacion').forEach(el => {
-        if (el.type === "checkbox") el.checked = false;
-        if (el.type === "radio") el.checked = false;
-      });
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
       calcularTotal();
     }
 
