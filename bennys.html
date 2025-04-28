@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benny's - TPV</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d10000;
+            --dark-red: #8b0000;
+            --light-red: #ff3333;
+            --gray-bg: #f5f5f5;
+            --dark-gray: #333;
+        }
+        
+        body {
+            font-family: 'Arial Black', Gadget, sans-serif;
+            background-color: #222;
+            color: #333;
+            background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3');
+            background-blend-mode: overlay;
+            background-size: cover;
+        }
+        
+        .header {
+            background-color: var(--dark-red);
+            color: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 5px solid black;
+        }
+        
+        .header h1 {
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header i {
+            margin-right: 15px;
+            font-size: 2rem;
+        }
+        
+        .panel {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-top: 5px solid var(--primary-red);
+        }
+        
+        .panel-title {
+            color: var(--dark-red);
+            border-bottom: 2px solid var(--light-red);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .service-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .service-name {
+            font-weight: bold;
+            color: var(--dark-red);
+        }
+        
+        .service-price {
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+        
+        .form-label {
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #ccc;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 0.25rem rgba(209, 0, 0, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-red);
+            border-color: var(--dark-red);
+            font-weight: bold;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+            border-color: var(--dark-red);
+        }
+        
+        .invoice-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .invoice-total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-red);
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 3px double var(--primary-red);
+        }
+        
+        .checkbox-label {
+            font-weight: bold;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-red);
+            border-color: var(--dark-red);
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .panel {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header text-center">
+        <div class="container">
+            <h1><i class="fas fa-car-mechanic"></i> BENNY'S - TPV</h1>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <!-- Panel izquierdo - Servicios y precios -->
+            <div class="col-md-4">
+                <div class="panel">
+                    <h3 class="panel-title"><i class="fas fa-list"></i> SERVICIOS Y TARIFAS</h3>
+                    
+                    <div class="service-item">
+                        <div class="service-name">REPARACIONES</div>
+                        <div class="service-price">Leve: $45</div>
+                        <div class="service-price">Normal: $70</div>
+                        <div class="service-price">Siniestro: $100</div>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-name">KITS</div>
+                        <div class="service-price">Limpieza: $100</div>
+                        <div class="service-price">Reparación: $80</div>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-name">MEJORAS</div>
+                        <div class="service-price">Por pieza: $100 (1-4 piezas)</div>
+                        <div class="service-price">Mejora completa: 5% del valor del vehículo</div>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-name">PINTURA</div>
+                        <div class="service-price">5% del valor base</div>
+                        <div class="service-price">1% si hay modificaciones</div>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-name">CONVENIO</div>
+                        <div class="service-price">Descuento aplicable al total</div>
+                        <div class="service-price">Por defecto: 10%</div>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+            <!-- Panel central - Formulario -->
+            <div class="col-md-4">
+                <div class="panel">
+                    <h3 class="panel-title"><i class="fas fa-edit"></i> DATOS DEL VEHÍCULO</h3>
+                    
+                    <form id="tpvForm">
+                        <div class="mb-3">
+                            <label for="vehiclePrice" class="form-label">Precio del vehículo ($)</label>
+                            <input type="number" class="form-control" id="vehiclePrice" min="0" step="1" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de reparación</label>
+                            <select class="form-select" id="repairType">
+                                <option value="0">Ninguna</option>
+                                <option value="45">Leve ($45)</option>
+                                <option value="70">Normal ($70)</option>
+                                <option value="100">Siniestro ($100)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Kits aplicados</label>
+                            <select class="form-select" id="kitType">
+                                <option value="0">Ninguno</option>
+                                <option value="100">Limpieza ($100)</option>
+                                <option value="80">Reparación ($80)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Mejoras</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pieceUpgrade">
+                                <label class="form-check-label checkbox-label" for="pieceUpgrade">
+                                    Por pieza ($100 c/u)
+                                </label>
+                            </div>
+                            <div class="input-group mt-2" id="piecesGroup" style="display: none;">
+                                <span class="input-group-text">Nº piezas (1-4)</span>
+                                <input type="number" class="form-control" id="piecesCount" min="1" max="4" value="1">
+                            </div>
+                            
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="fullUpgrade">
+                                <label class="form-check-label checkbox-label" for="fullUpgrade">
+                                    Mejora completa (5% del valor)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="paintJob">
+                                <label class="form-check-label checkbox-label" for="paintJob">
+                                    Pintura (5% del valor, 1% con modificaciones)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="hasAgreement">
+                                <label class="form-check-label checkbox-label" for="hasAgreement">
+                                    Aplicar convenio
+                                </label>
+                            </div>
+                            <div class="input-group mt-2" id="discountGroup" style="display: none;">
+                                <span class="input-group-text">Descuento %</span>
+                                <input type="number" class="form-control" id="discountPercent" min="0" max="100" value="10">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Panel derecho - Factura -->
+            <div class="col-md-4">
+                <div class="panel">
+                    <h3 class="panel-title"><i class="fas fa-receipt"></i> FACTURA</h3>
+                    
+                    <div id="invoiceDetails">
+                        <div id="repairInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between">
+                                <span>Reparación:</span>
+                                <span id="repairPrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="kitInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between">
+                                <span>Kit:</span>
+                                <span id="kitPrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="pieceUpgradeInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between">
+                                <span>Mejora por piezas:</span>
+                                <span id="pieceUpgradePrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="fullUpgradeInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between">
+                                <span>Mejora completa:</span>
+                                <span id="fullUpgradePrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="paintInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between">
+                                <span>Pintura:</span>
+                                <span id="paintPrice">$0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="agreementInvoice" class="invoice-item" style="display: none;">
+                            <div class="d-flex justify-content-between text-success">
+                                <span>Descuento convenio:</span>
+                                <span id="agreementDiscount">-$0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="invoice-total d-flex justify-content-between">
+                            <span>TOTAL:</span>
+                            <span id="totalPrice">$0</span>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-lg w-100 mt-3" onclick="location.reload()">
+                            <i class="fas fa-sync-alt"></i> REINICIAR
+                        </button>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3 class="panel-title"><i class="fas fa-tools"></i> HERRAMIENTAS</h3>
+                    <p class="text-muted">Sistema TPV para gestión de reparaciones y facturación.</p>
+                    <p><i class="fas fa-info-circle text-danger"></i> Todos los precios se calculan automáticamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar/ocultar campos condicionales
+            document.getElementById('hasAgreement').addEventListener('change', function() {
+                document.getElementById('discountGroup').style.display = this.checked ? 'flex' : 'none';
+                calculateInvoice();
+            });
+            
+            document.getElementById('pieceUpgrade').addEventListener('change', function() {
+                document.getElementById('piecesGroup').style.display = this.checked ? 'flex' : 'none';
+                calculateInvoice();
+            });
+            
+            // Escuchar cambios en todos los inputs
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('change', calculateInvoice);
+                input.addEventListener('input', calculateInvoice);
+            });
+            
+            // Calcular factura inicial
+            calculateInvoice();
+        });
+        
+        function calculateInvoice() {
+            // Obtener valores del formulario
+            const vehiclePrice = parseFloat(document.getElementById('vehiclePrice').value) || 0;
+            const repairType = parseFloat(document.getElementById('repairType').value) || 0;
+            const kitType = parseFloat(document.getElementById('kitType').value) || 0;
+            const hasPieceUpgrade = document.getElementById('pieceUpgrade').checked;
+            const piecesCount = parseInt(document.getElementById('piecesCount').value) || 0;
+            const hasFullUpgrade = document.getElementById('fullUpgrade').checked;
+            const hasPaintJob = document.getElementById('paintJob').checked;
+            const hasAgreement = document.getElementById('hasAgreement').checked;
+            const discountPercent = parseFloat(document.getElementById('discountPercent').value) || 0;
+            
+            // Calcular servicios
+            let repairPrice = repairType;
+            let kitPrice = kitType;
+            let pieceUpgradePrice = hasPieceUpgrade ? Math.min(piecesCount, 4) * 100 : 0;
+            let fullUpgradePrice = hasFullUpgrade ? vehiclePrice * 0.05 : 0; // Cambiado a 5%
+            
+            // Calcular pintura según nuevas reglas
+            let paintPrice = 0;
+            if (hasPaintJob) {
+                if (hasPieceUpgrade || hasFullUpgrade) {
+                    paintPrice = vehiclePrice * 0.01; // 1% si hay modificaciones
+                } else {
+                    paintPrice = vehiclePrice * 0.05; // 5% si no hay modificaciones
+                }
+            }
+            
+            // Calcular subtotal (sin incluir el valor del vehículo)
+            let subtotal = repairPrice + kitPrice + pieceUpgradePrice + fullUpgradePrice + paintPrice;
+            
+            // Aplicar descuento si hay convenio
+            let discountAmount = 0;
+            if (hasAgreement && discountPercent > 0) {
+                discountAmount = subtotal * (discountPercent / 100);
+            }
+            
+            let total = subtotal - discountAmount;
+            
+            // Actualizar factura
+            
+            // Reparación
+            if (repairPrice > 0) {
+                document.getElementById('repairInvoice').style.display = 'block';
+                document.getElementById('repairPrice').textContent = formatCurrency(repairPrice);
+            } else {
+                document.getElementById('repairInvoice').style.display = 'none';
+            }
+            
+            // Kit
+            if (kitPrice > 0) {
+                document.getElementById('kitInvoice').style.display = 'block';
+                document.getElementById('kitPrice').textContent = formatCurrency(kitPrice);
+            } else {
+                document.getElementById('kitInvoice').style.display = 'none';
+            }
+            
+            // Mejora por piezas
+            if (pieceUpgradePrice > 0) {
+                document.getElementById('pieceUpgradeInvoice').style.display = 'block';
+                document.getElementById('pieceUpgradePrice').textContent = formatCurrency(pieceUpgradePrice);
+            } else {
+                document.getElementById('pieceUpgradeInvoice').style.display = 'none';
+            }
+            
+            // Mejora completa
+            if (fullUpgradePrice > 0) {
+                document.getElementById('fullUpgradeInvoice').style.display = 'block';
+                document.getElementById('fullUpgradePrice').textContent = formatCurrency(fullUpgradePrice);
+            } else {
+                document.getElementById('fullUpgradeInvoice').style.display = 'none';
+            }
+            
+            // Pintura
+            if (paintPrice > 0) {
+                document.getElementById('paintInvoice').style.display = 'block';
+                document.getElementById('paintPrice').textContent = formatCurrency(paintPrice);
+            } else {
+                document.getElementById('paintInvoice').style.display = 'none';
+            }
+            
+            // Descuento convenio
+            if (discountAmount > 0) {
+                document.getElementById('agreementInvoice').style.display = 'block';
+                document.getElementById('agreementDiscount').textContent = '-' + formatCurrency(discountAmount);
+            } else {
+                document.getElementById('agreementInvoice').style.display = 'none';
+            }
+            
+            // Total
+            document.getElementById('totalPrice').textContent = formatCurrency(total);
+        }
+        
+        function formatCurrency(amount) {
+            return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+    </script>
+</body>
+</html>
