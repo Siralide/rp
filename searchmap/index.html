@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapa de GTA V - Rastreo NPCs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="d-flex flex-column vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-map-marked-alt me-2"></i>GTA V NPC Tracker
+            </a>
+            <div class="d-flex align-items-center">
+                <span id="progress-text" class="badge bg-info me-3">0% completado</span>
+                <button id="reset-btn" class="btn btn-danger btn-sm me-2">
+                    <i class="fas fa-undo me-1"></i> Reiniciar
+                </button>
+                <button class="btn btn-sm btn-success me-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                    <i class="fas fa-file-export me-1"></i> Exportar
+                </button>
+                <button class="btn btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#importModal">
+                    <i class="fas fa-file-import me-1"></i> Importar
+                </button>
+                <!-- Botón para abrir modal de instrucciones -->
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#instructionsModal">
+                    <i class="fas fa-info-circle me-1"></i> Instrucciones
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="map-viewport" class="flex-grow-1 overflow-hidden position-relative">
+        <div id="map-container">
+            <img id="gta-map" src="assets/Next-Gen Map.png" alt="Mapa de GTA V" />
+            <div id="grid-overlay"></div>
+        </div>
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 m-3">
+        <div class="btn-group-vertical shadow">
+            <button id="zoom-in" class="btn btn-primary btn-lg">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button id="zoom-out" class="btn btn-primary btn-lg">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button id="reset-zoom" class="btn btn-secondary btn-lg">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Exportar -->
+    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exportModalLabel"><i class="fas fa-file-export me-2"></i>Exportar sectores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="export-text" class="form-control" rows="5" readonly></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="copy-export" class="btn btn-success">
+                        <i class="fas fa-copy me-1"></i> Copiar
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Importar -->
+    <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importModalLabel"><i class="fas fa-file-import me-2"></i>Importar sectores</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea
+                        id="import-text"
+                        class="form-control"
+                        rows="5"
+                        placeholder="Pegue aquí los datos exportados..."
+                    ></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="import-btn" class="btn btn-primary">
+                        <i class="fas fa-upload me-1"></i> Importar
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Instrucciones -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionsModalLabel">
+                        <i class="fas fa-info-circle me-2"></i> Cómo utilizar la página
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            <strong>Importar las áreas ya exploradas:</strong> Antes de comenzar a marcar sectores en el mapa,
+                            es importante importar los datos de las áreas que ya han sido exploradas. Estos datos se actualizarán periódicamente y se compartirán en el servidor de Discord para evitar duplicar trabajo.
+                        </li>
+                        <li>
+                            <strong>Explorar y marcar nuevas zonas:</strong> Conforme vayas explorando nuevas zonas del mapa, selecciona
+                            los sectores correspondientes haciendo clic sobre ellos para llevar un registro visual y actualizado.
+                        </li>
+                        <li>
+                            <strong>Exportar y compartir tu progreso:</strong> Cuando hayas terminado de explorar y marcar nuevas áreas,
+                            utiliza la función de exportar para obtener el listado actualizado de sectores. Envía este listado al canal de Discord correspondiente para que otros usuarios puedan importar estos datos y continuar sin solapamientos.
+                        </li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
