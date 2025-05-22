@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crimson Print - Carta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a0a0a;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            color: #e8d8b5;
+            font-family: 'IM Fell English', serif;
+            overflow-x: hidden;
+        }
+        
+        .menu-container {
+            width: 90vw;
+            max-width: 1600px;
+            height: 50.625vw; /* 16:9 aspect ratio */
+            max-height: 900px;
+            margin: 2rem auto;
+            background-color: #2a1a0f;
+            background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+            border: 15px solid #5c3a21;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), 
+                        inset 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139,69,19,0.1) 0%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a66b, transparent);
+        }
+        
+        h1 {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 4.5rem;
+            margin: 0;
+            color: #c9a66b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+        }
+        
+        h2 {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 3rem;
+            color: #c9a66b;
+            border-bottom: 1px dashed #c9a66b;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-columns {
+            display: flex;
+            height: calc(100% - 120px);
+        }
+        
+        .column {
+            flex: 1;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+        
+        .column:not(:last-child) {
+            border-right: 1px dashed #5c3a21;
+        }
+        
+        .item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .item-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .name {
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .price {
+            color: #c9a66b;
+            font-family: 'IM Fell English SC', serif;
+        }
+        
+        .description {
+            font-size: 1.5rem;
+            color: #d4c6a8;
+            font-style: italic;
+            margin-left: 1rem;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #5c3a21, transparent);
+            margin: 1rem 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #c9a66b;
+        }
+        
+        .stamp {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            opacity: 0.7;
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="%23c9a66b" stroke-width="2"/><text x="50" y="50" font-family="\'IM Fell English SC\', serif" font-size="14" fill="%23c9a66b" text-anchor="middle" dominant-baseline="middle">THE CRIMSON PRINT</text></svg>');
+            transform: rotate(15deg);
+        }
+        
+        .unique {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background-color: #c9a66b;
+            color: #2a1a0f;
+            font-family: 'IM Fell English SC', serif;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="stamp"></div>
+        <div class="header">
+            <h1>THE CRIMSON PRINT</h1>
+            <p>Est. 1897 • Speakeasy & Dining</p>
+        </div>
+        
+        <div class="menu-columns">
+            <div class="column">
+                <h2>Bebidas no alcohólicas</h2>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Agua</span>
+                        <span class="price">$6.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Cola</span>
+                        <span class="price">$11.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Café</span>
+                        <span class="price">$10.00</span>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <h2>Comidas</h2>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Tortilla de patata</span>
+                        <span class="price">$25.00</span>
+                    </div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Hamburguesa Crimson Deluxe</span>
+                        <span class="price">$30.00</span>
+                    </div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h2>Bebidas alcohólicas</h2>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Peldaños</span>
+                        <span class="price">$35.00</span>
+                    </div>
+                    <div class="description">Malibú con piña - Cóctel tropical y dulce a base de ron de coco y jugo de piña.</div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Keineitoru</span>
+                        <span class="price">$45.00</span>
+                    </div>
+                    <div class="description">Tan-Dry - Combinación refrescante de ginebra y agua tónica, con un toque seco.</div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Bocanegra</span>
+                        <span class="price">$42.00</span>
+                    </div>
+                    <div class="description">El ciervo dulce - Mezcla suave y especiada de licor Jägermeister con bebida energética.</div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Tennpeny</span>
+                        <span class="price">$35.00</span>
+                    </div>
+                    <div class="description">Margarita - Clásico cóctel mexicano de tequila, triple sec y jugo de lima.</div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h2>Premium Selection</h2>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Crimson Reserve - Whisky</span>
+                        <span class="price">$100.00</span>
+                    </div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Champagne Cramoisi</span>
+                        <span class="price">$120.00</span>
+                    </div>
+                    <span class="unique">ÚNICO</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <h2>Rangos</h2>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Crimson Master (Jefe)</span>
+                        <span class="price">$250.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Bloodline Keeper (Subjefe)</span>
+                        <span class="price">$220.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Scarlet Brewer (Veterano)</span>
+                        <span class="price">$200.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Ruby Tapper (Empleado)</span>
+                        <span class="price">$150.00</span>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-name">
+                        <span class="name">Crimson Initiate (Novato)</span>
+                        <span class="price">$125.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>• Todas las bebidas alcohólicas se sirven a mayores de 18 años •</p>
+            <p>El consumo excesivo de alcohol es perjudicial para la salud</p>
+        </div>
+    </div>
+</body>
+</html>
