@@ -195,388 +195,186 @@
             <h1><i class="fas fa-cocktail me-2"></i> The Crimson Pint - TPV</h1>
         </div>
         
-        <div class="row">
-            <!-- Catálogo de productos -->
-            <div class="col-md-8">
-                <!-- Bebidas alcohólicas -->
-                <div class="mb-4">
-                    <h3 class="category-title">
-                        <i class="fas fa-wine-glass-alt me-2"></i>Bebidas alcohólicas
-                    </h3>
-                    <div class="row">
-                        <!-- Whisky Crimson Reserve -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Whisky Crimson Reserve', 18.50)" id="product-Whisky Crimson Reserve">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-whiskey"></i></div>
-                                    <h5 class="product-name">Whisky Crimson Reserve</h5>
-                                    <div class="product-price">$18.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Ron Black Kraken -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Ron Black Kraken', 14.00)" id="product-Ron Black Kraken">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-wine-bottle"></i></div>
-                                    <h5 class="product-name">Ron Black Kraken</h5>
-                                    <div class="product-price">$14.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Vodka Snowfall -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Vodka Snowfall', 16.00)" id="product-Vodka Snowfall">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-wine-bottle"></i></div>
-                                    <h5 class="product-name">Vodka Snowfall</h5>
-                                    <div class="product-price">$16.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Ginebra Scarlet -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Ginebra Scarlet', 15.50)" id="product-Ginebra Scarlet">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cocktail"></i></div>
-                                    <h5 class="product-name">Ginebra Scarlet</h5>
-                                    <div class="product-price">$15.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tequila Bandido -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Tequila Bandido', 12.75)" id="product-Tequila Bandido">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-whiskey"></i></div>
-                                    <h5 class="product-name">Tequila Bandido</h5>
-                                    <div class="product-price">$12.75</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Cóctel Blood Moon -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Cóctel Blood Moon', 11.00)" id="product-Cóctel Blood Moon">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cocktail"></i></div>
-                                    <h5 class="product-name">Cóctel Blood Moon</h5>
-                                    <div class="product-price">$11.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Martini de Oro -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Martini de Oro', 13.50)" id="product-Martini de Oro">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-martini-alt"></i></div>
-                                    <h5 class="product-name">Martini de Oro</h5>
-                                    <div class="product-price">$13.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Old Fashioned Crimson -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Old Fashioned Crimson', 17.00)" id="product-Old Fashioned Crimson">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-whiskey"></i></div>
-                                    <h5 class="product-name">Old Fashioned Crimson</h5>
-                                    <div class="product-price">$17.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Mojito de Luxe -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Mojito de Luxe', 10.50)" id="product-Mojito de Luxe">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cocktail"></i></div>
-                                    <h5 class="product-name">Mojito de Luxe</h5>
-                                    <div class="product-price">$10.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sangría Real -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Sangría Real', 9.00)" id="product-Sangría Real">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-wine-glass"></i></div>
-                                    <h5 class="product-name">Sangría Real</h5>
-                                    <div class="product-price">$9.00</div>
-                                </div>
-                            </div>
+<div class="row">
+    <!-- Catálogo de productos -->
+    <div class="col-md-8">
+        <!-- Bebidas no alcoholicas -->
+        <div class="mb-4">
+            <h3 class="category-title">
+                <i class="fas fa-coffee me-2"></i>Bebidas no alcoholicas
+            </h3>
+            <div class="row">
+                <!-- Agua -->
+                <div class="col-md-4 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Agua', 10.0)" id="product-Agua">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-tint"></i></div>
+                            <h5 class="product-name">Agua</h5>
+                            <div class="product-price">$10.00</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Bebidas no alcohólicas -->
-                <div class="mb-4">
-                    <h3 class="category-title">
-                        <i class="fas fa-coffee me-2"></i>Bebidas no alcohólicas
-                    </h3>
-                    <div class="row">
-                        <!-- Refresco de Importación -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Refresco de Importación', 4.00)" id="product-Refresco de Importación">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-cheers"></i></div>
-                                    <h5 class="product-name">Refresco de Importación</h5>
-                                    <div class="product-price">$4.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Limonada Artesanal -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Limonada Artesanal', 5.50)" id="product-Limonada Artesanal">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-water"></i></div>
-                                    <h5 class="product-name">Limonada Artesanal</h5>
-                                    <div class="product-price">$5.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Agua Mineral -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Agua Mineral', 3.00)" id="product-Agua Mineral">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-tint"></i></div>
-                                    <h5 class="product-name">Agua Mineral</h5>
-                                    <div class="product-price">$3.00</div>
-                                </div>
-                            </div>
+                <!-- Cola -->
+                <div class="col-md-4 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Cola', 12.0)" id="product-Cola">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-glass-cheers"></i></div>
+                            <h5 class="product-name">Cola</h5>
+                            <div class="product-price">$12.00</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Comida -->
-                <div class="mb-4">
-                    <h3 class="category-title">
-                        <i class="fas fa-utensils me-2"></i>Comida
-                    </h3>
-                    <div class="row">
-                        <!-- Hamburguesa Crimson Deluxe -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Hamburguesa Crimson Deluxe', 14.00)" id="product-Hamburguesa Crimson Deluxe">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-hamburger"></i></div>
-                                    <h5 class="product-name">Hamburguesa Crimson Deluxe</h5>
-                                    <div class="product-price">$14.00</div>
-                                </div>
-                            </div>
+                <!-- Café -->
+                <div class="col-md-4 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Café', 10.0)" id="product-Café">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-coffee"></i></div>
+                            <h5 class="product-name">Café</h5>
+                            <div class="product-price">$10.00</div>
                         </div>
-                        
-                        <!-- Costillas BBQ -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Costillas BBQ', 16.50)" id="product-Costillas BBQ">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-drumstick-bite"></i></div>
-                                    <h5 class="product-name">Costillas BBQ</h5>
-                                    <div class="product-price">$16.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Alitas Picantes -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Alitas Picantes', 12.00)" id="product-Alitas Picantes">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-drumstick-bite"></i></div>
-                                    <h5 class="product-name">Alitas Picantes</h5>
-                                    <div class="product-price">$12.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Nachos Supreme -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Nachos Supreme', 11.50)" id="product-Nachos Supreme">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cheese"></i></div>
-                                    <h5 class="product-name">Nachos Supreme</h5>
-                                    <div class="product-price">$11.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Filete Mignon -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Filete Mignon', 22.00)" id="product-Filete Mignon">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-utensils"></i></div>
-                                    <h5 class="product-name">Filete Mignon</h5>
-                                    <div class="product-price">$22.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Pizza Artesanal -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Pizza Artesanal', 13.00)" id="product-Pizza Artesanal">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-pizza-slice"></i></div>
-                                    <h5 class="product-name">Pizza Artesanal</h5>
-                                    <div class="product-price">$13.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Ensalada César con Pollo -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Ensalada César con Pollo', 10.00)" id="product-Ensalada César con Pollo">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-leaf"></i></div>
-                                    <h5 class="product-name">Ensalada César con Pollo</h5>
-                                    <div class="product-price">$10.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sándwich Club -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Sándwich Club', 9.50)" id="product-Sándwich Club">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-bread-slice"></i></div>
-                                    <h5 class="product-name">Sándwich Club</h5>
-                                    <div class="product-price">$9.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tabla de Quesos -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Tabla de Quesos', 15.00)" id="product-Tabla de Quesos">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cheese"></i></div>
-                                    <h5 class="product-name">Tabla de Quesos</h5>
-                                    <div class="product-price">$15.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Postre Chocolate Lava -->
-                        <div class="col-md-3 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Postre Chocolate Lava', 7.50)" id="product-Postre Chocolate Lava">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-ice-cream"></i></div>
-                                    <h5 class="product-name">Postre Chocolate Lava</h5>
-                                    <div class="product-price">$7.50</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Extras/Snacks -->
-                <div class="mb-4">
-                    <h3 class="category-title">
-                        <i class="fas fa-plus-circle me-2"></i>Extras/Snacks
-                    </h3>
-                    <div class="row">
-                        <!-- Patatas Bravas -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Patatas Bravas', 6.00)" id="product-Patatas Bravas">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-french-fries"></i></div>
-                                    <h5 class="product-name">Patatas Bravas</h5>
-                                    <div class="product-price">$6.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Aros de Cebolla -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Aros de Cebolla', 5.50)" id="product-Aros de Cebolla">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-onion"></i></div>
-                                    <h5 class="product-name">Aros de Cebolla</h5>
-                                    <div class="product-price">$5.50</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Palomitas Especiadas -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Palomitas Especiadas', 4.00)" id="product-Palomitas Especiadas">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-popcorn"></i></div>
-                                    <h5 class="product-name">Palomitas Especiadas</h5>
-                                    <div class="product-price">$4.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Servicio Premium -->
-                <div class="mb-4">
-                    <h3 class="category-title">
-                        <i class="fas fa-crown me-2"></i>Servicio Premium
-                    </h3>
-                    <div class="row">
-                        <!-- Champagne Dom Pérignon -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Champagne Dom Pérignon', 120.00)" id="product-Champagne Dom Pérignon">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-wine-bottle"></i></div>
-                                    <h5 class="product-name">Champagne Dom Pérignon</h5>
-                                    <div class="product-price">$120.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Whisky Johnnie Walker Blue Label -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Whisky Johnnie Walker Blue Label', 50.00)" id="product-Whisky Johnnie Walker Blue Label">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-glass-whiskey"></i></div>
-                                    <h5 class="product-name">Whisky Blue Label</h5>
-                                    <div class="product-price">$50.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Cóctel Personalizado -->
-                        <div class="col-md-4 mb-3">
-                            <div class="card product-card" onclick="addToInvoice('Cóctel Personalizado', 20.00)" id="product-Cóctel Personalizado">
-                                <div class="card-body text-center">
-                                    <div class="product-icon"><i class="fas fa-cocktail"></i></div>
-                                    <h5 class="product-name">Cóctel Personalizado</h5>
-                                    <div class="product-price">$20.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Panel de factura -->
-            <div class="col-md-4">
-                <div class="invoice-panel">
-                    <h3 class="invoice-header"><i class="fas fa-receipt me-2"></i>Factura</h3>
-                    <div id="invoice-items">
-                        <!-- Los items de la factura aparecerán aquí -->
-                        <div class="text-muted text-center py-3">Selecciona productos para añadirlos a la factura</div>
-                    </div>
-                    <div id="invoice-total" class="invoice-total text-end">
-                        Total: $0.00
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-reset" onclick="resetInvoice()">
-                            <i class="fas fa-redo me-2"></i>Nueva compra
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Bebidas alcoholicas -->
+        <div class="mb-4">
+            <h3 class="category-title">
+                <i class="fas fa-wine-glass-alt me-2"></i>Bebidas alcoholicas
+            </h3>
+            <div class="row">
+                <!-- Peldaños -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Peldaños', 35.0)" id="product-Peldaños">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-cocktail"></i></div>
+                            <h5 class="product-name">Peldaños</h5>
+                            <div class="product-price">$35.00</div>
+                            <small class="text-muted">Malibú con piña</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Keineitoru -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Keineitoru', 45.0)" id="product-Keineitoru">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-cocktail"></i></div>
+                            <h5 class="product-name">Keineitoru</h5>
+                            <div class="product-price">$45.00</div>
+                            <small class="text-muted">Tan-Dry</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bocanegra -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Bocanegra', 42.0)" id="product-Bocanegra">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-cocktail"></i></div>
+                            <h5 class="product-name">Bocanegra</h5>
+                            <div class="product-price">$42.00</div>
+                            <small class="text-muted">El ciervo dulce</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tennpeny -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Tennpeny', 35.0)" id="product-Tennpeny">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-cocktail"></i></div>
+                            <h5 class="product-name">Tennpeny</h5>
+                            <div class="product-price">$35.00</div>
+                            <small class="text-muted">Margarita</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comidas -->
+        <div class="mb-4">
+            <h3 class="category-title">
+                <i class="fas fa-utensils me-2"></i>Comidas
+            </h3>
+            <div class="row">
+                <!-- Tortilla de patata -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Tortilla de patata', 25.0)" id="product-Tortilla de patata">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-egg"></i></div>
+                            <h5 class="product-name">Tortilla de patata</h5>
+                            <div class="product-price">$25.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hamburguesa Crimson Deluxe -->
+                <div class="col-md-3 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Hamburguesa Crimson Deluxe', 30.0)" id="product-Hamburguesa Crimson Deluxe">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-hamburger"></i></div>
+                            <h5 class="product-name">Hamburguesa Crimson Deluxe</h5>
+                            <div class="product-price">$30.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium -->
+        <div class="mb-4">
+            <h3 class="category-title">
+                <i class="fas fa-crown me-2"></i>Premium
+            </h3>
+            <div class="row">
+                <!-- Crimson Reserve - Wisky -->
+                <div class="col-md-4 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Crimson Reserve - Wisky', 100.0)" id="product-Crimson Reserve - Wisky">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-glass-whiskey"></i></div>
+                            <h5 class="product-name">Crimson Reserve - Wisky</h5>
+                            <div class="product-price">$100.00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Champagne Cramoisi -->
+                <div class="col-md-4 mb-3">
+                    <div class="card product-card" onclick="addToInvoice('Champagne Cramoisi', 120.0)" id="product-Champagne Cramoisi">
+                        <div class="card-body text-center">
+                            <div class="product-icon"><i class="fas fa-wine-bottle"></i></div>
+                            <h5 class="product-name">Champagne Cramoisi</h5>
+                            <div class="product-price">$120.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Panel de factura -->
+    <div class="col-md-4">
+        <div class="invoice-panel">
+            <h3 class="invoice-header"><i class="fas fa-receipt me-2"></i>Factura</h3>
+            <div id="invoice-items">
+                <!-- Los items de la factura aparecerán aquí -->
+                <div class="text-muted text-center py-3">Selecciona productos para añadirlos a la factura</div>
+            </div>
+            <div id="invoice-total" class="invoice-total text-end">
+                Total: $0.00
+            </div>
+            <div class="text-center">
+                <button class="btn btn-reset" onclick="resetInvoice()">
+                    <i class="fas fa-redo me-2"></i>Nueva compra
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
     </div>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
