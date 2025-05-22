@@ -15,25 +15,22 @@
             color: #e8d8b5;
             font-family: 'IM Fell English', serif;
             overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         
         .menu-container {
-            width: 1280px;
-            height: 720px;
-            margin: 20px auto;
+            width: 1600px;
+            height: 900px;
+            height: 50.625vw; /* 16:9 aspect ratio */
+            max-height: 900px;
+            margin: 2rem auto;
             background-color: #2a1a0f;
             background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
-            border: 12px solid #5c3a21;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 
-                        inset 0 0 15px rgba(0, 0, 0, 0.5);
-            padding: 25px;
+            border: 15px solid #5c3a21;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), 
+                        inset 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
             position: relative;
             overflow: hidden;
-            box-sizing: border-box;
         }
         
         .menu-container::before {
@@ -49,59 +46,49 @@
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 1rem;
         }
         
         .header::after {
             content: "";
             position: absolute;
             bottom: 0;
-            left: 30%;
-            right: 30%;
+            left: 25%;
+            right: 25%;
             height: 2px;
             background: linear-gradient(90deg, transparent, #c9a66b, transparent);
         }
         
         h1 {
             font-family: 'IM Fell English SC', serif;
-            font-size: 48px;
-            margin: 5px 0;
+            font-size: 4.5rem;
+            margin: 0;
             color: #c9a66b;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
         
         h2 {
             font-family: 'IM Fell English SC', serif;
-            font-size: 28px;
+            font-size: 3rem;
             color: #c9a66b;
             border-bottom: 1px dashed #c9a66b;
-            padding-bottom: 5px;
-            margin-top: 20px;
-            margin-bottom: 15px;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
         }
         
         .menu-columns {
             display: flex;
-            height: calc(100% - 110px);
+            height: calc(100% - 120px);
         }
         
         .column {
             flex: 1;
-            padding: 0 15px;
+            padding: 0 1.5rem;
             position: relative;
-            overflow-y: auto;
-        }
-        
-        .column::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .column::-webkit-scrollbar-thumb {
-            background: #5c3a21;
-            border-radius: 3px;
         }
         
         .column:not(:last-child) {
@@ -109,82 +96,69 @@
         }
         
         .item {
-            margin-bottom: 18px;
+            margin-bottom: 1.5rem;
             position: relative;
         }
         
         .item-name {
             display: flex;
             justify-content: space-between;
-            font-size: 22px;
-            margin-bottom: 5px;
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
         }
         
         .name {
             font-weight: bold;
             font-style: italic;
-            max-width: 70%;
         }
         
         .price {
             color: #c9a66b;
             font-family: 'IM Fell English SC', serif;
-            white-space: nowrap;
         }
         
         .description {
-            font-size: 16px;
+            font-size: 1.5rem;
             color: #d4c6a8;
             font-style: italic;
-            margin-left: 10px;
-            line-height: 1.3;
+            margin-left: 1rem;
         }
         
         .divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, #5c3a21, transparent);
-            margin: 15px 0;
+            margin: 1rem 0;
         }
         
         .footer {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 2rem;
             font-style: italic;
-            font-size: 14px;
+            font-size: 0.9rem;
             color: #c9a66b;
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
         }
         
         .stamp {
             position: absolute;
-            right: 20px;
-            top: 20px;
+            right: 2rem;
+            top: 2rem;
             opacity: 0.7;
-            width: 80px;
-            height: 80px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="%23c9a66b" stroke-width="2"/><text x="50" y="50" font-family="\'IM Fell English SC\', serif" font-size="12" fill="%23c9a66b" text-anchor="middle" dominant-baseline="middle">THE CRIMSON PRINT</text></svg>');
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="%23c9a66b" stroke-width="2"/><text x="50" y="50" font-family="\'IM Fell English SC\', serif" font-size="14" fill="%23c9a66b" text-anchor="middle" dominant-baseline="middle">THE CRIMSON PRINT</text></svg>');
             transform: rotate(15deg);
         }
         
         .unique {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -0.5rem;
+            right: -0.5rem;
             background-color: #c9a66b;
             color: #2a1a0f;
             font-family: 'IM Fell English SC', serif;
-            font-size: 12px;
-            padding: 2px 6px;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
             border-radius: 3px;
-            z-index: 1;
-        }
-        
-        .header p {
-            margin: 5px 0;
-            font-size: 16px;
         }
     </style>
 </head>
@@ -300,7 +274,7 @@
                     </div>
                     <span class="unique">ÚNICO</span>
                 </div>
-        
+                
         
         <div class="footer">
             <p>• Todas las bebidas alcohólicas se sirven a mayores de 18 años •</p>
